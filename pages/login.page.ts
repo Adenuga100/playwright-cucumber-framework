@@ -44,7 +44,7 @@ export class LoginPage {
     }
 
     async uploadFile(): Promise<void> {
-      let filePath = path.resolve('C:\\Users\\NUGA\\Downloads\\template_data (1).xlsx');
+      let filePath = path.resolve('C:\\Users\\NUGA\\Downloads\\template_data.xlsx');
        await this.page.setInputFiles('input[type="file"]', filePath, { timeout: 5000 });
     }
 
