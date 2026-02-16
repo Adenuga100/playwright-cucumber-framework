@@ -25,3 +25,39 @@ Then('I should see the dashboard', async function () {
     
 });
 
+When('I browse for a file', async function () {
+  // Write code here that turns the phrase above into concrete actions
+const loginPage = new LoginPage(this.page);
+   return await loginPage.uploadFile();
+})
+
+When('I click {string} button',async function  (btn: string) {
+  // Write code here that turns the phrase above into concrete actions
+   const loginPage = new LoginPage(this.page);
+   return await loginPage.downloadBtn(btn);
+})
+
+When('I click {string} Start Practice',async function  (practice: string) {
+  // Write code here that turns the phrase above into concrete actions
+  const loginPage = new LoginPage(this.page);
+   return await loginPage.startPractice(practice);
+})
+
+Then('I able to upload a file successfully',async function  () {
+  // Write code here that turns the phrase above into concrete actions
+   const loginPage = new LoginPage(this.page);
+   return await expect( await loginPage.getFileSuccessfully()).toBeVisible({ timeout: 5000 });
+})
+
+When('user click on  download button', async function() {
+  // Write code here that turns the phrase above into concrete actions
+  const loginPage = new LoginPage(this.page);
+   return await loginPage.downloadButton();
+})
+
+When('I click {string} on slide menus', async function(menus: string) {
+  // Write code here that turns the phrase above into concrete actions
+  const loginPage = new LoginPage(this.page);
+   return await loginPage.slideMenus(menus);
+})
+
