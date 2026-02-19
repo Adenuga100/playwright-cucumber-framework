@@ -1,20 +1,49 @@
 {
   
   "name": "playwright-cucumber-framework",
+  
   "version": "1.0.0",
+  
   "main": "index.js",
-  "scripts": {"test": "npx cucumber-js"},
+  
+  "scripts": {
+  
+    
+  "test": "npx cucumber-js"
+  
+  },
+  
   "keywords": [],
+  
   "author": "",
+  
   "license": "ISC",
+  
   "description": "",
+  
   "devDependencies": {
-    "@cucumber/cucumber": "^12.6.0",
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.2.3",
-    "ts-node": "^10.9.2"
+  
+    
+  "@cucumber/cucumber": "^12.6.0",
+  
+    
+  "@playwright/test": "^1.58.2",
+  
+    
+  "@types/dotenv": "^6.1.1",
+  
+    
+  "@types/node": "^25.2.3",
+  
+    
+  "ts-node": "^10.9.2"
+  
+  },
+  
+  "dependencies": {
+  
+    
+  "dotenv": "^17.3.1"
+  
   }
- 
 }
-
-

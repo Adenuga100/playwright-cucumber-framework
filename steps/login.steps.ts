@@ -9,19 +9,19 @@ Given('I navigate to the login page', async function () {
 
 When('I enter valid credentials', async function () {
     const loginPage = new LoginPage(this.page);
-   return await loginPage.login('adenugaadeyemiisaac@gmail.com', 'Hardayemmh4$');
+   await loginPage.login('adenugaadeyemiisaac@gmail.com', 'Hardayemmh4$');
 });
 
 When('I click on sigin button', async function () {
     // Write code here that turns the phrase above into concrete actions
     const loginPage = new LoginPage(this.page);
-   return await loginPage.button();
+   await loginPage.button();
 });  
 
 Then('I should see the dashboard', async function () {
     // Write code here that turns the phrase above into concrete actions
     const loginPage = new LoginPage(this.page);
-   return await expect( await loginPage.getTittle()).toBeVisible({ timeout: 5000 });
+   await expect( await loginPage.getTittle()).toBeVisible({ timeout: 5000 });
     
 });
 
