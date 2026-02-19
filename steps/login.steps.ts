@@ -25,22 +25,34 @@ Then('I should see the dashboard', async function () {
     
 });
 
-When('I click {string} Start Practice',async function (practice: string) {
+When('I browse for a file', async function () {
   // Write code here that turns the phrase above into concrete actions
-    const loginPage = new LoginPage(this.page);
+const loginPage = new LoginPage(this.page);
+   return await loginPage.uploadFile();
+})
+
+When('I click {string} button',async function  (btn: string) {
+  // Write code here that turns the phrase above into concrete actions
+   const loginPage = new LoginPage(this.page);
+   return await loginPage.downloadBtn(btn);
+})
+
+When('I click {string} Start Practice',async function  (practice: string) {
+  // Write code here that turns the phrase above into concrete actions
+  const loginPage = new LoginPage(this.page);
    return await loginPage.startPractice(practice);
 })
 
-When('I drag and drop the items', async function() {
+Then('I able to upload a file successfully',async function  () {
   // Write code here that turns the phrase above into concrete actions
-    const loginPage = new LoginPage(this.page);
-   return await loginPage.dropAndDrop();
+   const loginPage = new LoginPage(this.page);
+   return await expect( await loginPage.getFileSuccessfully()).toBeVisible({ timeout: 5000 });
 })
 
-Then('I drop the items successfully', async function() {
+When('user click on  download button', async function() {
   // Write code here that turns the phrase above into concrete actions
-    const loginPage = new LoginPage(this.page);
-   return await expect( await loginPage.getDropItemsSuccess()).toBeVisible({ timeout: 5000 });
+  const loginPage = new LoginPage(this.page);
+   return await loginPage.downloadButton();
 })
 
 When('I click {string} on slide menus', async function(menus: string) {
@@ -48,46 +60,4 @@ When('I click {string} on slide menus', async function(menus: string) {
   const loginPage = new LoginPage(this.page);
    return await loginPage.slideMenus(menus);
 })
-
-
-When('User click on cookies', async function () {
-    const loginPage = new LoginPage(this.page);
-    await loginPage.cookies();
-})
-
-When('user click on sign up button', async function () {
-  const loginPage = new LoginPage(this.page);
-    await loginPage.signUpButton();
-})
-
-When('user enters full name as{string}', async function (name: string) {
-  // Write code here that turns the phrase above into concrete actions
-  const loginPage = new LoginPage(this.page);
-   await loginPage.fullName(name);
-})
-
-
-
-When('User enters email',async function  ()  {
-  // Write code here that turns the phrase above into concrete actions
-  const loginPage = new LoginPage(this.page);
-   return await loginPage.email();
-})
-
-When('User enters as {string}', async function (ps: string) {
-  // Write code here that turns the phrase above into concrete actions
-  const loginPage = new LoginPage(this.page);
-   return await loginPage.password();
-})
-
-When('User click on create account button',async function  () {
-  // Write code here that turns the phrase above into concrete actions
-  const loginPage = new LoginPage(this.page);
-   return await loginPage.createButton();
-})
-
-
-
-
-
 

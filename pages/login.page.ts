@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import path from "path";
 import process from "node:process";
 
 export class LoginPage {
@@ -19,27 +20,21 @@ export class LoginPage {
     }
 
     async startPractice(practice:string): Promise<void> {
-        let startPractice = this.page.locator(`//span[text()='${practice}']/following::button[1]`);
+       let startPractice = this.page.locator(`//div[contains(@class,'card')][.//span[normalize-space()='${practice}']]//button`);
          
         await startPractice.click();
-        // let source = this.page.locator('[class="space-y-3 min-h-[200px]"] [id*="item"]'); // Replace with actual selector
-        // let target = this.page.locator('[id="drop-zone"]'); // Replace with actual selector
-        
-        // while (await source.count() > 0) {
-        //    await source.first().dragTo(target);
-        // }
-       
     }
 
-    async dropAndDrop(): Promise<void> {
-      
-        let source = this.page.locator('[class="space-y-3 min-h-[200px]"] [id*="item"]'); // Replace with actual selector
-        let target = this.page.locator('[id="drop-zone"]'); // Replace with actual selector
-        
-        while (await source.count() > 0) {
-           await source.first().dragTo(target);
-        }
-       
+    async downloadBtn(btn1:string): Promise<void> {
+       let btn = this.page.getByRole('button', { name: `${btn1}` });
+         
+        await btn.click();
+    }
+
+    async downloadButton(): Promise<void> {
+       let btn = this.page.getByRole('button', { name: '' });
+         
+        await btn.click();
     }
 
     async slideMenus(menus:string): Promise<void> {
@@ -48,48 +43,23 @@ export class LoginPage {
        await slideMenusBtn.click();
        
     }
-    async cookies(): Promise<void> {
-        return await this.page.getByRole('button', { name: 'Accept All' }).click();
-    }  
 
-    async signUpButton(): Promise<void> {
+    async uploadFile(): Promise<void> {
+     //   let filePath = path.resolve('C:\Users\NUGA\Desktop\template_data (1)');
+      const filePath = path.resolve('C:/Users/NUGA/Downloads/template_data.xlsx');
 
-       return await this.page.getByRole('button', { name: 'Sign Up' }).nth(1).click();
-    }  
+       await this.page.setInputFiles('input[type="file"]', filePath, { timeout: 5000 });
+    }
 
-    async fullName (name:string): Promise<void> {
-
-       return await this.page.locator('[name="full_name"]').fill(name);
-    }  
-
-    async email (): Promise<void> {
-
-        let email = `user_${crypto.randomUUID()}@testmail.com`;
-        await this.page.locator('[name="email"]').fill(email);
-        return;
-    }  
-
-    async password (): Promise<void> {
-
-        let password = `P@ss_${crypto.randomUUID()}`;
-        return await this.page.locator('[name="password"]').fill(password);
-    }  
-
-    async createButton (): Promise<void> {
-
-        return await this.page.getByRole('button', { name: 'Create Account' }).click();
-    }  
-    
-
-   async getTittle():Promise<Locator> {
+    async getTittle():Promise<Locator> {
        let formTitle = await this.page.getByText('Practice Dashboard'); 
      await formTitle.scrollIntoViewIfNeeded();
      return formTitle;
     }
 
-    async getDropItemsSuccess():Promise<Locator> {
-
-      return this.page.getByText('Learn to test drag and drop interactions')
+    async getFileSuccessfully():Promise<Locator> {
+       let uploadFileBtn = this.page.getByText('Status: Processed'); 
+        return uploadFileBtn;
     }
 
    
