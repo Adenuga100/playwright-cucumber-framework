@@ -1,12 +1,16 @@
 import { Locator, Page } from "@playwright/test";
 import path from "path";
+<<<<<<< HEAD
 import fs from 'fs';
+=======
+import process from "node:process";
+>>>>>>> c526378469544e52b82b15ff6b6de7a098f99902
 
 export class LoginPage {
     constructor(private page: Page) {}
 
     async navigate() {
-        await this.page.goto("https://www.learnaqa.info/");
+        await this.page.goto('https://www.learnaqa.info/');
     }
 
     async login(user: string, pass: string): Promise<void> {
@@ -16,7 +20,7 @@ export class LoginPage {
     }
 
     async button(): Promise<void> {
-        await this.page.click('[class="btn focus-visible btn-outline btn-lg w-full sm:w-auto"]');
+        return await this.page.getByRole('button', { name: 'Sign In' }).nth(1).click();
     }
 
     async startPractice(practice:string): Promise<void> {

@@ -8,6 +8,7 @@ Given('I navigate to the login page', async function () {
 });
 
 When('I enter valid credentials', async function () {
+<<<<<<< HEAD
    const loginPage = new LoginPage(this.page);
    return await loginPage.login('adenugaadeyemiisaac@gmail.com', 'Hardayemmh4$');
 });
@@ -16,12 +17,27 @@ When('I click on sigin button', async function () {
    // Write code here that turns the phrase above into concrete actions
    const loginPage = new LoginPage(this.page);
    return await loginPage.button();
+=======
+    const loginPage = new LoginPage(this.page);
+   await loginPage.login('adenugaadeyemiisaac@gmail.com', 'Hardayemmh4$');
+});
+
+When('I click on sigin button', async function () {
+    // Write code here that turns the phrase above into concrete actions
+    const loginPage = new LoginPage(this.page);
+   await loginPage.button();
+>>>>>>> c526378469544e52b82b15ff6b6de7a098f99902
 });  
 
 Then('I should see the dashboard', async function () {
     // Write code here that turns the phrase above into concrete actions
+<<<<<<< HEAD
    const loginPage = new LoginPage(this.page);
    return await expect( await loginPage.getTittle()).toBeVisible({ timeout: 5000 });
+=======
+    const loginPage = new LoginPage(this.page);
+   await expect( await loginPage.getTittle()).toBeVisible({ timeout: 5000 });
+>>>>>>> c526378469544e52b82b15ff6b6de7a098f99902
     
 });
 
