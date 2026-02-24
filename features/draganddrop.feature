@@ -7,7 +7,6 @@ Background: Successful login with valid credentials
     When I enter valid credentials
     Then I should see the dashboard
 
-
 Scenario: Drag and drop on dashboard function
     When I click "Drag & Drop" Start Practice
     And I drag and drop the items
