@@ -1,6 +1,10 @@
 import { Locator, Page } from "@playwright/test";
 import path from "path";
+<<<<<<< HEAD
+import fs from 'fs';
+=======
 import process from "node:process";
+>>>>>>> c526378469544e52b82b15ff6b6de7a098f99902
 
 export class LoginPage {
     constructor(private page: Page) {}
@@ -46,9 +50,21 @@ export class LoginPage {
 
     async uploadFile(): Promise<void> {
      //   let filePath = path.resolve('C:\Users\NUGA\Desktop\template_data (1)');
-      const filePath = path.resolve('C:/Users/NUGA/Downloads/template_data.xlsx');
+       let filePath = path.resolve('C:/Users/NUGA/Downloads/template_data.xlsx');
+      // Ensure the filename matches your local file exactly (watch for spaces!)
+      // Change this line in login.page.ts:
+    //  const filePath = path.join(process.cwd(), 'test-data', 'template_data.xlsx');
 
-       await this.page.setInputFiles('input[type="file"]', filePath, { timeout: 5000 });
+       // Defensive check: stop early if the file isn't there
+        if (!fs.existsSync(filePath)) {
+          throw new Error(`File not found at: ${filePath}`);
+        }
+
+        // Upload the file
+        const fileInput = this.page.locator('input[type="file"]');
+        await fileInput.setInputFiles(filePath);
+
+      //    await this.page.setInputFiles('input[type="file"]', filePath, { timeout: 5000 });
     }
 
     async getTittle():Promise<Locator> {
